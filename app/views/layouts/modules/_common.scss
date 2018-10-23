@@ -1,0 +1,10 @@
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.form-control-inline{
+  display: inline-block!important;
+  width: auto!important;
+}

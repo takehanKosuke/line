@@ -1,0 +1,46 @@
+.course-name-box{
+  background-color: #0093FF;
+  color: #fff;
+  padding: 13px;
+  margin-top: -8px;
+}
+
+.course-name{
+  font-family: 'Mr Eaves XL Mod OT';
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.annotation{
+  font-size: 14px;
+}
+
+.course-detaile{
+  background-color: #000041;
+}
+
+.average-price{
+  color: #fff;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 30px;
+  font-family: Mr Eaves XL Mod OT;
+}
+
+.course-content{
+  color: #fff;
+  font-family: Mr Eaves XL Mod OT;
+  margin-bottom: 30px;
+  .content-head{
+    font-weight: bold;
+    margin-bottom: 23px;
+  }
+  .content-item{
+    word-break: break-all;
+  }
+}
+@media (max-width: 768px) {
+  .course-content .content-item{
+    font-size: 15px;
+  }
+}

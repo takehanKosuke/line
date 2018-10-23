@@ -1,0 +1,62 @@
+// inputタグの対象を追加
+input[type="datetime-local"],
+input[type='number']{
+  background: rgba(255, 255, 255, 0.075);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: inherit;
+}
+
+input[type="datetime-local"]:focus,
+input[type='number']:focus,
+textarea:focus{
+  background-color: #fff!important;
+  border-color: #fff!important;
+  box-shadow: 0 0 0 1px #fff;
+  color: #000!important;
+}
+
+.wrapper {
+  height: auto;
+}
+// bootstrapパンくずカスタム
+.breadcrumb{
+  background-color: inherit!important;
+}
+// インナーカラーの追加
+.wrapper:before {
+  background-image: none!important;
+}
+
+.wrapper.style1{
+  background-color: #000034!important;
+}
+
+.wrapper.style2{
+  background-color: #330031!important;
+}
+
+.wrapper.style3{
+  background-color: #000041!important;
+}
+
+.wrapper.style4{
+  background-color: #00C2D1!important;
+}
+
+.wrapper.style5{
+  background-color: #000!important;
+}
+// datetimeのカスタム
+form .form-group select.form-control{
+  position: unset;
+}
+// topの画像を変更
+#banner {
+  background-image: url("/test_data/club2.png")!important;
+}
+
+@media (max-width: 768px) {
+  #header > h1{
+    left: 34%!important;
+  }
+}
