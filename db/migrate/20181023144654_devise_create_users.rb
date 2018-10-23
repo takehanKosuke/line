@@ -16,7 +16,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
 
       # add kosuke
       t.string :name, null: false
-      t.string :image, null: false, default: ""
+      t.string :image
 
       ## Trackable
       t.integer  :sign_in_count, default: 0, null: false
