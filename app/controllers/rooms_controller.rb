@@ -1,4 +1,7 @@
 class RoomsController < ApplicationController
-  def index
+  def show
+    @user = current_user
+    @room = Room.find(params[:id])
+    @messages = @room.messages.all.order(created_at: :desc)
   end
 end

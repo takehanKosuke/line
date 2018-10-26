@@ -6,11 +6,7 @@
     %ul.navbar-nav
       - if user_signed_in?
         %li.nav-item.active
-          %a.nav-link{:href => "#"}
-            友達一覧
-        %li.nav-item.active
-          %a.nav-link{:href => "#"}
-            友だち追加
+          = link_to 'メッセージルームへ', root_path, class:'nav-link'
         %li.nav-item.active
           = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:'nav-link'
       -else

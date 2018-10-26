@@ -3,3 +3,27 @@
   height: 100px;
   width: 100px;
 }
+
+.add-friend-box {
+  display: flex;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.rooms-box {
+  display: flex;
+  border: 1px solid #000;
+  padding: 10px;
+  border-radius: 10px;
+  color: #000;
+  &:hover {
+    text-decoration: none;
+    background-color: #EEE;
+  }
+}
+
+.footer {
+  color: #fff;
+  height: 100px;
+}

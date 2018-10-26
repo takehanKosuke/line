@@ -7,9 +7,10 @@ class User < ApplicationRecord
     validates :name, presence: true
     validates :image, presence: true
 
+    has_many :user_rooms
     has_many :messages
     has_many :rooms, through: :user_rooms
-    has_many :user_rooms
+
 
     mount_uploader :image, ImageUploader
 end

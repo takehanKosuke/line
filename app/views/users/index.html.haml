@@ -1,15 +1,17 @@
 .container
   .row.mt-5
-    .col-3
+    .col-sm-3
       = render 'users/left_area'
-    .col-9
+    .col-sm-9
       #v-pills-tabContent.tab-content
-        #v-pills-home.tab-pane.fade.show.active{"aria-labelledby" => "v-pills-home-tab", :role => "tabpanel"}
-          - @users.each do |user|
-            .add-friend-box
-              = image_tag user.image_url(:square_md), class: 'user-img'
-              = user.name
-              = link_to '友達になる', root_path, class:'btn btn-info'
+        #v-pills-messages.tab-pane.fade.show.active{"aria-labelledby" => "v-pills-messages-tab", :role => "tabpanel"}
+          - @rooms.each do |room|
+            =link_to room_path(room.id) do
+              .rooms-box.mt-3
+                = image_tag room.users.where.not(id: current_user.id).first.image_url(:square_md), class:'user-img mr-3'
+                = room.users.where.not(id: current_user.id).first.name
+                %br
+                = room.messages.order(created_at: :desc).first.content
         #v-pills-profile.tab-pane.fade{"aria-labelledby" => "v-pills-profile-tab", :role => "tabpanel"}
           .row
             .col-12
@@ -24,17 +26,9 @@
               %p メールアドレス
             .col-sm-8
               %p= current_user.email
-        #v-pills-messages.tab-pane.fade{"aria-labelledby" => "v-pills-messages-tab", :role => "tabpanel"}
-          メッセージルームだよ！
-          - @rooms.each do |room|
-            %br
-            .room-box.mt-4
-              = room.user
-
-
-
--#     .col-9
--#       #v-pills-tabContent.tab-content
--#         = render 'users/add_friend'
--#         = render 'users/room'
--#         = render 'users/profile'
+        #v-pills-home.tab-pane.fade{"aria-labelledby" => "v-pills-home-tab", :role => "tabpanel"}
+          - @users.each do |user|
+            .add-friend-box.mt-3
+              = image_tag user.image_url(:square_md), class: 'user-img'
+              = user.name
+              = link_to '友達になる', root_path, class:'btn btn-info'
