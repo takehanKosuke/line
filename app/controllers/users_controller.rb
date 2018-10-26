@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @users = User.all
-    @rooms = UserRoom.where(user_id: @user.id).map{|t| Room.find(t.room_id)}
+    @rooms = @user.rooms.order(last_message_at: :desc)
   end
 
   def show

@@ -6,6 +6,8 @@
     %ul.navbar-nav
       - if user_signed_in?
         %li.nav-item.active
+          = link_to 'メッセージルームへ', root_path, class:'nav-link'
+        %li.nav-item.active
           = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:'nav-link'
       -else
         %li.nav-item.active
