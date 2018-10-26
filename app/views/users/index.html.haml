@@ -1,0 +1,40 @@
+.container
+  .row.mt-5
+    .col-3
+      = render 'users/left_area'
+    .col-9
+      #v-pills-tabContent.tab-content
+        #v-pills-home.tab-pane.fade.show.active{"aria-labelledby" => "v-pills-home-tab", :role => "tabpanel"}
+          - @users.each do |user|
+            .add-friend-box
+              = image_tag user.image_url(:square_md), class: 'user-img'
+              = user.name
+              = link_to '友達になる', root_path, class:'btn btn-info'
+        #v-pills-profile.tab-pane.fade{"aria-labelledby" => "v-pills-profile-tab", :role => "tabpanel"}
+          .row
+            .col-12
+              = image_tag = image_tag current_user.image_url(:square_md), class:'user-img'
+          .row
+            .col-sm-4
+              %p 名前
+            .col-sm-8
+              %p= current_user.name
+          .row
+            .col-sm-4
+              %p メールアドレス
+            .col-sm-8
+              %p= current_user.email
+        #v-pills-messages.tab-pane.fade{"aria-labelledby" => "v-pills-messages-tab", :role => "tabpanel"}
+          メッセージルームだよ！
+          - @rooms.each do |room|
+            %br
+            .room-box.mt-4
+              = room.user
+
+
+
+-#     .col-9
+-#       #v-pills-tabContent.tab-content
+-#         = render 'users/add_friend'
+-#         = render 'users/room'
+-#         = render 'users/profile'
