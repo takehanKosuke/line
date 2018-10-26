@@ -14,7 +14,7 @@ class Init < ActiveRecord::Migration[5.2]
     end
 
     create_table :messages do |t|
-      t.string :message, null: false
+      t.string :content, null: false
       t.boolean :is_read, null: false, default: false
       t.integer :room_id, null: false
       t.integer :user_id, null: false
