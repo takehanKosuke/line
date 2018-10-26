@@ -1,0 +1,11 @@
+- if @rooms.present?
+  - @rooms.each do |room|
+    =link_to room_path(room.id) do
+      .rooms-box.mt-3
+        = image_tag room.users.where.not(id: current_user.id).first.image_url(:square_md), class:'user-img mr-3'
+        = room.users.where.not(id: current_user.id).first.name
+        %br
+        - if room.messages.present?
+          = room.messages.order(created_at: :desc).first.content
+- else
+  まだ連絡をとっている人はいません
