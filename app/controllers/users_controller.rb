@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
   def index
     @user = User.find(current_user.id)
-    @users = User.all
+    # ユーザーの持っているルームを出す
+    has_user_rooms = @user.rooms
+    # そのルームに紐づくuser_idを配列で取る
+    already_friends = UserRoom.where(room_id: has_user_rooms).pluck(:user_id).uniq
+    # その配列以外のuser_idを持つユーザーを返す
+    @users = User.where.not(id: already_friends)
+
     @rooms = @user.rooms.order(last_message_at: :desc)
+    @room = Room.new
+    @room.user_rooms.build
   end
 
   def show

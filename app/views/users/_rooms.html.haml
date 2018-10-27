@@ -1,11 +1,14 @@
-- if @rooms.present?
+- if @room.present?
   - @rooms.each do |room|
+    - counts = room.messages.where.not(user_id: @user.id).where(is_read: false).count
     =link_to room_path(room.id) do
       .rooms-box.mt-3
         = image_tag room.users.where.not(id: current_user.id).first.image_url(:square_md), class:'user-img mr-3'
         = room.users.where.not(id: current_user.id).first.name
         %br
         - if room.messages.present?
-          = room.messages.order(created_at: :desc).first.content
+          = room.messages.order(created_at: :desc).first.content.truncate(20)
+        - unless counts.zero?
+          .unread-count= counts
 - else
   まだ連絡をとっている人はいません

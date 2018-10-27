@@ -1,5 +1,5 @@
 - @users.each do |user|
   .add-friend-box.mt-3
     = image_tag user.image_url(:square_md), class: 'user-img'
-    = user.name
-    = link_to '友達になる', root_path, class:'btn btn-info'
+    %h2.ml-3= user.name
+    = link_to '友達になる！', rooms_path(user1_id: user.id, user2_id: current_user.id), method: :post, class:'btn btn-success add-btn'
