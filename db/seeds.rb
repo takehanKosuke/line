@@ -1,33 +1,33 @@
 User.create(
-  name: 'test1',
+  name: '山田太郎',
   email: 'test1@test.com',
   image: File.open("./public/images/men1.jpg"),
   password: '111111'
 )
 
 User.create(
-  name: 'test2',
+  name: '伊藤優作',
   email: 'test2@test.com',
   image: File.open("./public/images/men2.jpg"),
   password: '111111'
 )
 
 User.create(
-  name: 'test3',
+  name: '中田高貴',
   email: 'test3@test.com',
   image: File.open("./public/images/men3.jpg"),
   password: '111111'
 )
 
 User.create(
-  name: 'tes4',
+  name: '安藤さな',
   email: 'test4@test.com',
   image: File.open("./public/images/women1.jpg"),
   password: '111111'
 )
 
 User.create(
-  name: 'tes5',
+  name: '渡辺優香',
   email: 'test5@test.com',
   image: File.open("./public/images/women2.jpg"),
   password: '111111'
