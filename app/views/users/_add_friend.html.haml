@@ -2,4 +2,8 @@
   .add-friend-box.mt-3
     = image_tag user.image_url(:square_md), class: 'user-img'
     = user.name
-    = link_to '友達になる', root_path, class:'btn btn-info'
+    = form_for @room do |f|
+      = f.hidden_field :last_message_at, value: Time.now
+      -# = f.hidden_field :user_rooms_ids, value: [][user.id, @user.id]
+      = f.hidden_field :user_room_ids, value: user.id
+      = f.submit "友達になる", class: "btn btn-primary"
