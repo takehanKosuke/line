@@ -48,6 +48,9 @@ gem 'ransack'
 #output the ER  diagram
 gem 'rails-erd'
 
+gem 'sqlite3', group: [:development, :test]
+gem 'pg', group: :production
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
