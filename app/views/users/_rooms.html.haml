@@ -1,5 +1,5 @@
-- if @rooms.present?
-  - @rooms.each do |room|
+- if room.present?
+  - room .each do |room|
     =link_to room_path(room.id) do
       .rooms-box.mt-3
         = image_tag room.users.where.not(id: current_user.id).first.image_url(:square_md), class:'user-img mr-3'
