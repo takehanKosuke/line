@@ -1,6 +1,6 @@
 class Admin::MessagesController < Admin::BaseController
   def index
-    @messages = Messages.all
+    @messages = Message.all
   end
 
   def show
