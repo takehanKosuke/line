@@ -1,0 +1,14 @@
+.container
+  %table.table
+    %thead.thead-light
+      %tr
+        %th
+        %th sender user name
+        %th room ID
+    %tbody
+      - @messages.each do |message|
+        %tr
+          %th
+          %td message.user.name
+          %td message.room.id
+          %td= link_to '詳細へ', admin_rooms_path(message.id), class:'btn btn-info'

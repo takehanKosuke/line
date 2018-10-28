@@ -1,0 +1,15 @@
+.container
+  %table.table
+    %thead.thead-light
+      %tr
+        %th
+        %th 名前
+        %th メールアドレス
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %th= image_tag user.image_url(:square_md), class: 'user-img'
+          %td= user.name
+          %td= user.email
+          %td= link_to '詳細へ', admin_user_path(user.id), class:'btn btn-info'

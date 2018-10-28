@@ -1,0 +1,17 @@
+.container
+  %table.table
+    %thead.thead-light
+      %tr
+        %th
+        %th member name1
+        %th member name2
+        %th room ID
+        %th
+    %tbody
+      - @rooms.each do |room|
+        %tr
+          %th
+          - room.users.each do |user|
+            %td= user.name
+          %td= room.id
+          %td= link_to '詳細へ', admin_room_path(room.id), class:'btn btn-info'
