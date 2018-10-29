@@ -10,6 +10,7 @@
   - @messages.each do |message|
     - if message.user_id == @user.id
       .my-message-box.pt-4
+        .message-read.mr-2= '既読' if message.is_read?
         .message-date.mr-3= message.created_at.strftime("%H:%M")
         .message-content-box= message.content
         = image_tag @user.image.url(:square_md), class: "message-img ml-2"
