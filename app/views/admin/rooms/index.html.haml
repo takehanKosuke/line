@@ -10,7 +10,7 @@
     %tbody
       - @rooms.each do |room|
         %tr
-          %th
+          %td
           - room.users.each do |user|
             %td= user.name
           %td= room.id

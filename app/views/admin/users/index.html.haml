@@ -6,11 +6,12 @@
         %th 名前
         %th メールアドレス
         %th
+        %th
     %tbody
       - @users.each do |user|
         %tr
           %th= image_tag user.image_url(:square_md), class: 'user-img'
           %td= user.name
           %td= user.email
-          -# %td= link_to '詳細へ', admin_user_path(user.id), class:'btn btn-info'
           %td= link_to '編集する', edit_admin_user_path(user.id), class:'btn btn-info'
+          -# %td= link_to '削除する', admin_user_path(user.id), method: :delete, data: { confirm: "Are you sure to delete ?" }, class:'btn btn-danger'
