@@ -4,6 +4,8 @@ class Admin::RoomsController < Admin::BaseController
   end
 
   def show
+    @room = Room.find(params[:id])
+    @messages = @room.messages.all.order(created_at: :desc)
   end
 
   def new
