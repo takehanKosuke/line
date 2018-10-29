@@ -1,0 +1,14 @@
+.container
+  - user1 = @room.users.first
+  - user2 = @room.users.last
+  - @messages.each do |message|
+    - if message.user_id == user1.id
+      .my-message-box.pt-4
+        .message-date.mr-3= message.created_at.strftime("%H:%M")
+        .message-content-box= message.content
+        = image_tag user1.image.url(:square_md), class: "message-img ml-2"
+    - else
+      .partner-message-box.pt-4
+        = image_tag user2.image.url(:square_md), class: "message-img mr-2"
+        .message-content-box= message.content
+        .message-date.ml-3= message.created_at.strftime("%H:%M")
