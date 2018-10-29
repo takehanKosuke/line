@@ -1,5 +1,13 @@
-.row.pt-3
+.row
   .col-sm-4
-    = link_to 'ルーム一覧へ', admin_rooms_path, class:'admin-link-box'
+    .card{:style => "width: 18rem;"}
+      .card-body
+        %h5.card-title 現在のユーザー数
+        %p.card-text= "現在のユーザー数は#{@count_users}人です"
+        = link_to 'ユーザー一覧へ', admin_users_path, class:'btn btn-primary'
   .col-sm-4
-    = link_to 'ユーザー一覧へ', admin_users_path, class:'admin-link-box'
+    .card{:style => "width: 18rem;"}
+      .card-body
+        %h5.card-title 現在のルーム数
+        %p.card-text= "現在のルーム数は#{@count_rooms}個です"
+        = link_to 'ルーム一覧へ', admin_rooms_path, class:'btn btn-primary'
