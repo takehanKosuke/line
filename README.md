@@ -1,24 +1,21 @@
 # README
+【使用言語】
+-バックエンド
+・Ruby  '2.5.0'
+・Rails '5.2.1'
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+-フロントエンド
+・HTML
+・css
 
-Things you may want to cover:
+-データベース
+・Mysql
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+【実装できた機能】
+・ログイン機能
+・メッセージ機能
+・メッセージの既読機能
+・アドミン機能
+・検索機能
+・ユーザーのCRUD
+・ベーシック認証
