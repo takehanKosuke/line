@@ -14,6 +14,14 @@ class RoomsController < ApplicationController
     end
   end
 
+  def new
+    @room = Romm.new
+    @room.user_room.build
+  end
+
+  def group_create
+  end
+
   def create
     @room = Room.new(last_message_at: DateTime.now)
     if @room.save
@@ -23,5 +31,12 @@ class RoomsController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  private
+  def room_params
+    params.require(:room).permit(
+      user_id_attributes: [:id]
+    )
   end
 end
