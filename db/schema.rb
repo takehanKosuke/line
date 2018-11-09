@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_11_07_134322) do
     t.datetime "last_message_at", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_group", null: false
+    t.boolean "is_group", default: false, null: false
   end
 
   create_table "user_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

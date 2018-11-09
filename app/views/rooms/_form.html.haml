@@ -1,0 +1,11 @@
+= form_for @room do |f|
+  .form-group
+    = f.label 'グループメンバー選択', class: "col-md-3 control-label"
+    .col-md-9
+      .checkbox-wrap
+        = collection_check_boxes(:room, :user_room_ids, User.all, :id, :name ) do |t|
+          %label
+            = t.check_box
+            = t.text
+    .form-group
+      .pull-right= f.submit class: "btn"
