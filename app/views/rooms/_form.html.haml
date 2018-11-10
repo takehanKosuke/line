@@ -1,16 +1,15 @@
 -# TODO:
 -# 既読機能が死ぬ
-
-= form_for @room, :url=>{:action=>"group_create"} do |f|
-  =f.hidden_field :is_group, value: true
-  =f.hidden_field :last_message_at, value: DateTime.now
-  .form-group
-    = f.label 'グループメンバー選択', class: "col-md-3 control-label"
-    .col-md-9
-      .checkbox-wrap
-        = collection_check_boxes(:room, :user_ids, @friends, :id, :name ) do |t|
-          %label
-            = t.check_box
-            = t.text
-    .form-group
-      .pull-right= f.submit class: "btn"
+.container
+  %h3 友達でないとグループに入れることはできません
+  %h3 グループメンバー選択してください
+  = form_for @room, :url=>{:action=>"group_create"} do |f|
+    =f.hidden_field :is_group, value: true
+    =f.hidden_field :last_message_at, value: DateTime.now
+    .row
+      = collection_check_boxes(:room, :user_ids, @friends, :id, :name ) do |t|
+        .col-sm-4
+          = t.check_box
+          = t.text
+      .form-group.mt-3
+        .pull-right= f.submit class: "btn btn-info"
