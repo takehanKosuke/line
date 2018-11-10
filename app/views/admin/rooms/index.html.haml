@@ -11,7 +11,7 @@
       - @rooms.each do |room|
         %tr
           %td
-          - room.users.each do |user|
-            %td= user.name
+            - room.users.each do |user|
+              = user.name
           %td= room.id
           %td= link_to '詳細へ', admin_room_path(room.id), class:'btn btn-info'

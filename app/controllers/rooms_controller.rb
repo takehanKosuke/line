@@ -20,31 +20,31 @@ class RoomsController < ApplicationController
   end
 
   def group_create
-  end
-
-  def create
     @room = Room.new(room_params)
-    @room.last_message_at = DateTime.now
-    @room.is_group = true
     if @room.save
       redirect_to room_path(@room.id)
     else
       render :new
     end
-    # @room = Room.new(last_message_at: DateTime.now)
-    # if @room.save
-    #   UserRoom.create(user_id: params[:user1_id], room_id: @room.id)
-    #   UserRoom.create(user_id: params[:user2_id], room_id: @room.id)
-    #   redirect_to room_path(@room.id)
-    # else
-    #   redirect_to root_path
-    # end
+  end
+
+  def create
+    @room = Room.new(last_message_at: DateTime.now)
+    if @room.save
+      UserRoom.create(user_id: params[:user1_id], room_id: @room.id)
+      UserRoom.create(user_id: params[:user2_id], room_id: @room.id)
+      redirect_to room_path(@room.id)
+    else
+      render :new
+    end
   end
 
   private
   def room_params
     params.require(:room).permit(
-      user_room_ids: []
+      :is_group,
+      :last_message_at,
+      user_ids: []
     )
   end
 end

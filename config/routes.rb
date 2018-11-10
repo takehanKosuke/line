@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :rooms, only: [:new, :create, :show]
+  resources :rooms, only: [:new, :create, :show] do
+    collection do
+      post :group_create
+    end
+  end
   resources :messages, only: [:create]
   root 'users#index'
 
