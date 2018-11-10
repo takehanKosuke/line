@@ -1,3 +1,9 @@
+-# TODO:
+-# 既読機能が死ぬ
+-# 友達以外はグループ追加できないようにする
+-# 友だちになるってところのサジェスト方法を考えないといけない
+-# グループメンバー選択するときに自分は確定で入れておきたい
+
 = form_for @room, :url=>{:action=>"group_create"} do |f|
   =f.hidden_field :is_group, value: true
   =f.hidden_field :last_message_at, value: DateTime.now
