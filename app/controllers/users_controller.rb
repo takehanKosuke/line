@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @user = User.find(current_user.id)
+    @user = current_user
     # ユーザーの持っているルームを出す
-    has_user_rooms = @user.rooms
+    has_user_rooms = @user.rooms.not_group
     # そのルームに紐づくuser_idを配列で取る
     already_friends = UserRoom.where(room_id: has_user_rooms).pluck(:user_id).uniq
     # その配列以外のuser_idを持つユーザーを返す

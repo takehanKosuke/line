@@ -15,11 +15,19 @@ class RoomsController < ApplicationController
   end
 
   def new
+    @user = current_user
+    # ユーザーの持っているルームを出す
+    has_user_rooms = @user.rooms.not_group
+    # そのルームに紐づくuser_idを配列で取る
+    already_friends = UserRoom.where(room_id: has_user_rooms).pluck(:user_id).uniq
+    # その配列のuser_idを持つユーザーを返す
+    @friends = User.where(id: already_friends).where.not(id: @user.id)
     @room = Room.new
     @room.user_rooms.build
   end
 
   def group_create
+    params[:room][:user_ids] << current_user.id
     @room = Room.new(room_params)
     if @room.save
       redirect_to room_path(@room.id)
