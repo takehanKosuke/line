@@ -74,3 +74,20 @@ UserRoom.create(
   user_id: 4,
   room_id: 3
 )
+
+InappropriateWord.create (
+  [
+    {
+      word: 'うざい'
+    },
+    {
+      word: '死ね'
+    },
+    {
+      word: '消えろ'
+    },
+    {
+      word: 'きもい'
+    }
+  ]
+)
