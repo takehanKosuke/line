@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :users
     resources :rooms
     resources :messages
+    resources :inappropriate_words
   end
 end

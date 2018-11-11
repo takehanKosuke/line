@@ -11,3 +11,9 @@
         %h5.card-title 現在のルーム数
         %p.card-text= "現在のルーム数は#{@count_rooms}個です"
         = link_to 'ルーム一覧へ', admin_rooms_path, class:'btn btn-primary'
+  .col-sm-4
+    .card{:style => "width: 18rem;"}
+      .card-body
+        %h5.card-title 不適切ワード一覧
+        %p.card-text= "現在の不適切ワード数は#{@count_inappropriate}個です"
+        = link_to '不適切ワード一覧へ', admin_inappropriate_words_path, class:'btn btn-primary'
