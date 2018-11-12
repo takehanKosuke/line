@@ -11,6 +11,7 @@ class User < ApplicationRecord
     has_many :messages
     has_many :rooms, through: :user_rooms
 
+    enum status: { nomal: 0, ban: 1}
 
     mount_uploader :image, ImageUploader
 end

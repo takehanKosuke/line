@@ -5,13 +5,13 @@
   #Navber.collapse.navbar-collapse.justify-content-end
     %ul.navbar-nav
       - if user_signed_in?
-        %li.nav-item.active
-          = link_to 'メッセージルームへ', root_path, class:'nav-link'
+        - unless current_user.ban?
+          %li.nav-item.active
+            = link_to 'メッセージルームへ', root_path, class:'nav-link'
+          %li.nav-item.active
+            = link_to 'グループ作成', new_room_path,  class:'nav-link'
         %li.nav-item.active
           = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:'nav-link'
-        %li.nav-item.active
-          = link_to 'グループ作成', new_room_path,  class:'nav-link'
-
       -else
         %li.nav-item.active
           = link_to '新規登録', new_user_registration_path, class:'nav-link'

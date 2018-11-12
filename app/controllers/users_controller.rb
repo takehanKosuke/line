@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    before_action :user_account_ban?
+
   def index
     @user = current_user
     # ユーザーの持っているルームを出す
@@ -29,5 +31,13 @@ class UsersController < ApplicationController
   private
   def update_params
     params.require(:user).permit(:image, :name)
+  end
+
+  def user_account_ban?
+    if user_signed_in?
+      if current_user.ban?
+        redirect_to ban_index_path
+      end
+    end
   end
 end

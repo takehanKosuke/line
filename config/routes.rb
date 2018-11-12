@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       post :group_create
     end
   end
+  resources :ban, only: [:index]
   resources :messages, only: [:create]
   root 'users#index'
 
