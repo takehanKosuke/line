@@ -1,18 +1,9 @@
 class UsersController < ApplicationController
-    before_action :user_account_ban?
+  before_action :user_account_ban?
 
   def index
     @user = current_user
-    # ユーザーの持っているルームを出す
-    has_user_rooms = @user.rooms.not_group
-    # そのルームに紐づくuser_idを配列で取る
-    already_friends = UserRoom.where(room_id: has_user_rooms).pluck(:user_id).uniq
-    # その配列以外のuser_idを持つユーザーを返す
-    @users = User.where.not(id: already_friends).where.not(id: @user.id)
-
     @rooms = @user.rooms.order(last_message_at: :desc)
-    @room = Room.new
-    @room.user_rooms.build
   end
 
   def show
@@ -26,6 +17,21 @@ class UsersController < ApplicationController
   def update
     current_user.update(user_params)
     redirect_to "/"
+  end
+
+  def add_friend
+    @user = current_user
+    # ユーザーの持っているルームを出す
+    has_user_rooms = @user.rooms.not_group
+    # そのルームに紐づくuser_idを配列で取る
+    already_friends = UserRoom.where(room_id: has_user_rooms).pluck(:user_id).uniq
+    # その配列以外のuser_idを持つユーザーを返す
+    @users = User.where.not(id: already_friends).where.not(id: @user.id)
+  end
+
+  def group_create
+    @room = Room.new
+    @room.user_rooms.build
   end
 
   private

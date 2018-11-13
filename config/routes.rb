@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users do
+    collection do
+      get :add_friend, :group_create
+    end
+  end
   resources :rooms, only: [:new, :create, :show] do
     collection do
       post :group_create
@@ -8,6 +13,7 @@ Rails.application.routes.draw do
   resources :ban, only: [:index]
   resources :messages, only: [:create]
   root 'users#index'
+
 
   get '/admin', to: 'admin/dashboards#index'
   namespace :admin do
