@@ -8,3 +8,9 @@
           = render 'rooms'
         #v-pills-home.tab-pane.fade{"aria-labelledby" => "v-pills-home-tab", :role => "tabpanel"}
           = render 'add_friend'
+        #v-pills-home.tab-pane.fade{"aria-labelledby" => "v-pills-group-tab", :role => "tabpanel"}
+          = render 'group'
+-# TODO:グループ作成の方法だけど
+-# １．グループを作る専用のビューをつくってそこにグループに招待する人をよしなにやる（groupテーブルを作成するのが楽なのかな？）
+-# ２．ルームに招待したい友達を追加する案、、、（これすると個人間のやり取りできないから招待すると同時に個人のルームを作る必要があるかと）
+-# １のほうが現実的ではあるけど、、、考え中、、、

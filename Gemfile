@@ -49,6 +49,9 @@ gem 'ransack'
 #output the ER  diagram
 gem 'rails-erd'
 
+# turn work regularly
+gem 'whenever'
+
 gem 'sqlite3', group: [:development, :test]
 gem 'pg', group: :production
 

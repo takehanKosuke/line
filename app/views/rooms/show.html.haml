@@ -1,21 +1,27 @@
 .container
-  .row
-    .col-sm-12
-      = form_for Message.new do |f|
-        = f.hidden_field :room_id, value: @room.id
-        = f.hidden_field :user_id, value: @user.id
-        = f.text_area :content, rows: 6, class: "form-control form-control--message"
-        .message-form-submit-area
-          = f.submit '送信する', class: "btn btn-primary"
-  - @messages.each do |message|
-    - if message.user_id == @user.id
-      .my-message-box.pt-4
-        .message-read.mr-2= '既読' if message.is_read?
-        .message-date.mr-3= message.created_at.strftime("%H:%M")
-        .message-content-box= message.content
-        = image_tag @user.image.url(:square_md), class: "message-img ml-2"
-    - else
-      .partner-message-box.pt-4
-        = image_tag message.user.image.url(:square_md), class: "message-img mr-2"
-        .message-content-box= message.content
-        .message-date.ml-3= message.created_at.strftime("%H:%M")
+  #message-box-flame
+    .message-box
+      - @messages.each do |message|
+        - if message.user_id == @user.id
+          .my-message-box.py-2
+            .message-read.mr-2= '既読' if message.is_read?
+            .message-date.mr-3= message.created_at.strftime('%H:%M')
+            .message-content-box= message.content
+            = image_tag @user.image.url(:square_md), class: 'message-img ml-2'
+        - else
+          .partner-message-box.py-2
+            = image_tag message.user.image.url(:square_md), class: 'message-img mr-2'
+            .message-content-box= message.content
+            .message-date.ml-3= message.created_at.strftime('%H:%M')
+  = form_for Message.new do |f|
+    = f.hidden_field :room_id, value: @room.id
+    = f.hidden_field :user_id, value: @user.id
+    = f.text_area :content, rows: 3, class: 'form-control form-control--message'
+    .message-form-submit-area
+      = f.submit '送信する', class: 'btn btn-primary', id: 'add'
+
+:javascript
+  $(function() {
+    console.log('test')
+    $('#message-box-flame').animate({scrollTop: $('#message-box-flame')[0].scrollHeight}, 'fast');
+  });

@@ -3,8 +3,13 @@
     - counts = room.messages.where.not(user_id: @user.id).where(is_read: false).count
     =link_to room_path(room.id) do
       .rooms-box.mt-3
-        = image_tag room.users.where.not(id: current_user.id).first.image_url(:square_md), class:'user-img mr-3'
-        = room.users.where.not(id: current_user.id).first.name
+        - if room.is_group?
+          = image_tag '/assets/group.jpg', class:'user-img mr-3'
+          - room.users.each do |u|
+            = u.name
+        - else
+          = image_tag room.users.where.not(id: current_user.id).first.image_url(:square_md), class:'user-img mr-3'
+          = room.users.where.not(id: current_user.id).first.name
         %br
         - if room.messages.present?
           = room.messages.order(created_at: :desc).first.content.truncate(20)

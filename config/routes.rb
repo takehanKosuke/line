@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :rooms, only: [:create, :show]
+  resources :rooms, only: [:new, :create, :show] do
+    collection do
+      post :group_create
+    end
+  end
+  resources :ban, only: [:index]
   resources :messages, only: [:create]
   root 'users#index'
 
@@ -9,5 +14,6 @@ Rails.application.routes.draw do
     resources :users
     resources :rooms
     resources :messages
+    resources :inappropriate_words
   end
 end

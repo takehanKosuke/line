@@ -1,0 +1,12 @@
+.container
+  %table.table
+    %thead.thead-light
+      %tr
+        %th 不適切ワード
+        %th
+    %tbody
+      - @inappropriate_words.each do |word|
+        %tr
+          %td= word.word
+          %td= link_to '削除する', admin_inappropriate_word_path(word),method: :delete, class:'btn btn-danger'
+  = link_to '不適切ワードの追加', new_admin_inappropriate_word_path, class:'btn btn-hight'

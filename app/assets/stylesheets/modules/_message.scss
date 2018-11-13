@@ -3,6 +3,17 @@
   width: 40px;
   border-radius: 50%;
 }
+#message-box-flame {
+  height: 70vh;
+  overflow:auto;
+  border: solid 1px #AAA;
+  border-radius: 10px 10px 0px 0px;
+}
+.message-box {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 .my-message-box {
   display: flex;
   align-items: flex-end;

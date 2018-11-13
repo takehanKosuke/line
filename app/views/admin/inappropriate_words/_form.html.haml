@@ -1,0 +1,5 @@
+= form_for [:admin, @inappropriate_word] do |f|
+  .form-group
+    = f.label '不適切ワード', class: "col-sm-3 control-label"
+    = f.text_field :word, class: "form-control", require: true
+  = f.submit '送信する'

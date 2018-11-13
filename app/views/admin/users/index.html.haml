@@ -6,6 +6,7 @@
         %th
         %th 名前
         %th メールアドレス
+        %th 不適切ワード発言回数
         %th
         %th
     %tbody
@@ -14,4 +15,5 @@
           %th= image_tag user.image_url(:square_md), class: 'user-img'
           %td= user.name
           %td= user.email
+          %td= user.inappropriate_count
           %td= link_to '編集する', edit_admin_user_path(user.id), class:'btn btn-info'
