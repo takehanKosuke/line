@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_123942) do
+ActiveRecord::Schema.define(version: 2018_12_10_100427) do
 
   create_table "inappropriate_words", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "word", null: false
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2018_11_11_123942) do
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
-    t.boolean "is_read", default: false, null: false
     t.integer "room_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
@@ -32,6 +31,12 @@ ActiveRecord::Schema.define(version: 2018_11_11_123942) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_group", default: false, null: false
+  end
+
+  create_table "user_reads", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "room_id", null: false
+    t.integer "user_id", null: false
+    t.integer "message_id", null: false
   end
 
   create_table "user_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
