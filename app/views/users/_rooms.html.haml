@@ -1,6 +1,5 @@
-- if @room.present?
+- if @rooms.present?
   - @rooms.each do |room|
-    - counts = room.messages.where.not(user_id: @user.id).where(is_read: false).count
     =link_to room_path(room.id) do
       .rooms-box.mt-3
         - if room.is_group?
@@ -13,7 +12,7 @@
         %br
         - if room.messages.present?
           = room.messages.order(created_at: :desc).first.content.truncate(20)
-        - unless counts.zero?
-          .unread-count= counts
+        - unless read_counts(room, current_user).zero?
+          .unread-count= read_counts(room, current_user)
 - else
   まだ連絡をとっている人はいません

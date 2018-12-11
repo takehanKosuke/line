@@ -1,16 +1,16 @@
 class RoomsController < ApplicationController
+  before_action :is_group_user?, only: :show
+
   def show
     @user = current_user
-    @room = Room.find(params[:id])
-    # roomの参加者以外の人がURLベタ打ちでroomに入ってきたときにトップにリダイレクトさせる
-    if @room.users.any?{|u| u == @user}
-      @messages = @room.messages.all.order(created_at: :desc)
-      # メッセージを既読状態にする
-      @messages.where.not(user_id: @user).each do |message|
-        message.update(is_read: true)
+    @messages = @room.messages.all.order(created_at: :desc)
+    # メッセージを既読状態にする
+    @messages.where.not(user_id: current_user).each do |message|
+      UserRead.where(user_id: current_user, room_id: @room.id, message_id: message.id).first_or_create do |read|
+        read.user_id = current_user.id
+        read.room_id = @room.id
+        read.message_id = message.id
       end
-    else
-      redirect_to root_path
     end
   end
 
@@ -54,5 +54,13 @@ class RoomsController < ApplicationController
       :last_message_at,
       user_ids: []
     )
+  end
+
+  # roomの参加者以外の人がURLベタ打ちでroomに入ってきたときにトップにリダイレクトさせる
+  def is_group_user?
+    @room = Room.find(params[:id])
+    if @room.users.any?{|u| u == @user}
+      redirect_to root_path
+    end
   end
 end
