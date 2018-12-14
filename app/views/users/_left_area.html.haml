@@ -3,23 +3,24 @@
 -# #v-pills-tab.nav.flex-column.nav-pills{"aria-orientation" => "vertical", :role => "tablist"}
 -#   %a#v-pills-messages-tab.nav-link.active{"aria-controls" => "v-pills-messages", "aria-selected" => "false", "data-toggle" => "pill", :href => "#v-pills-messages", :role => "tab"} メッセージ
 -#   %a#v-pills-home-tab.nav-link{"aria-controls" => "v-pills-home", "aria-selected" => "true", "data-toggle" => "pill", :href => "#v-pills-home", :role => "tab"} 友だち追加
-.links
-  %ul
-    %li
-      = link_to users_path(@user) do
-        - if params[:controller] == 'users' && params[:action] == 'index'
-          .active-tag メッセージ
-        - else
-          .no-active-tag メッセージ
-    %li
-      = link_to add_friend_users_path do
-        - if params[:controller] == 'users' && params[:action] == 'add_friend'
-          .active-tag 友だち追加
-        - else
-          .no-active-tag 友だち追加
-    %li
-      = link_to new_room_path do
-        - if params[:controller] == 'rooms' && params[:action] == 'group_create'
-          .active-tag グループ作成
-        - else
-          .no-active-tag グループ作成
+.d-none.d-lg-block
+  .links
+    %ul
+      %li
+        = link_to users_path(@user) do
+          - if params[:controller] == 'users' && params[:action] == 'index'
+            .active-tag メッセージ
+          - else
+            .no-active-tag メッセージ
+      %li
+        = link_to add_friend_users_path do
+          - if params[:controller] == 'users' && params[:action] == 'add_friend'
+            .active-tag 友だち追加
+          - else
+            .no-active-tag 友だち追加
+      %li
+        = link_to new_room_path do
+          - if params[:controller] == 'rooms' && params[:action] == 'group_create'
+            .active-tag グループ作成
+          - else
+            .no-active-tag グループ作成

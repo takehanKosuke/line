@@ -1,14 +1,36 @@
-%nav.navbar.navbar-expand-lg.navbar-light.bg-light
-  %a.navbar-brand{:href => "/"} LINE
-  %button.navbar-toggler{"aria-controls" => "Navber", "aria-expanded" => "false", "aria-label" => "ナビゲーションの切替", "data-target" => "#Navber", "data-toggle" => "collapse", :type => "button"}
-    %span.navbar-toggler-icon
-  #Navber.collapse.navbar-collapse.justify-content-end
-    %ul.navbar-nav
-      - if user_signed_in?
-        %li.nav-item.active
-          = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:'nav-link'
-      -else
-        %li.nav-item.active
-          = link_to '新規登録', new_user_registration_path, class:'nav-link'
-        %li.nav-item.active
-          = link_to 'ログイン', new_user_session_path, class:' nav-link'
+.d-none.d-lg-block
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    %a.navbar-brand{:href => "/"} LINE
+    %button.navbar-toggler{"aria-controls" => "Navber", "aria-expanded" => "false", "aria-label" => "ナビゲーションの切替", "data-target" => "#Navber", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #Navber.collapse.navbar-collapse.justify-content-end
+      %ul.navbar-nav
+        - if user_signed_in?
+          %li.nav-item.active
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete,  class:'nav-link'
+        -else
+          %li.nav-item.active
+            = link_to '新規登録', new_user_registration_path, class:'nav-link'
+          %li.nav-item.active
+            = link_to 'ログイン', new_user_session_path, class:' nav-link'
+.d-block.d-lg-none
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-light
+    %a.navbar-brand{:href => "/"} LINE
+    %button.navbar-toggler{"aria-controls" => "Navber", "aria-expanded" => "false", "aria-label" => "ナビゲーションの切替", "data-target" => "#Navber", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    #Navber.collapse.navbar-collapse.justify-content-end
+      %ul.navbar-nav
+        - if user_signed_in?
+          %li.nav-item.active
+            = link_to 'ログアウト', destroy_user_session_path, method: :delete, class:'nav-link'
+          %li.nav-item.active
+            = link_to 'メッセージ', users_path(@user), class:'nav-link'
+          %li.nav-item.active
+            = link_to '友達登録', add_friend_users_path, class:'nav-link'
+          %li.nav-item.active
+            = link_to 'グループ作成', new_room_path, class:'nav-link'
+        -else
+          %li.nav-item.active
+            = link_to '新規登録', new_user_registration_path, class:'nav-link'
+          %li.nav-item.active
+            = link_to 'ログイン', new_user_session_path, class:' nav-link'
