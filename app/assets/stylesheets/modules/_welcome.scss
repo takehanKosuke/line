@@ -4,6 +4,26 @@ body {
   }
 }
 
+.links {
+  background-color: #eee;
+  padding: 15px;
+  border-radius: 15px;
+
+  li {
+    list-style: none;
+    padding: 15px 10px;
+    margin: 0px;
+    .active-tag {
+      background-color: #9BB2E8;
+      padding: 15px;
+      border-radius: 15px;
+      a {
+        color: #fff;
+      }
+    }
+  }
+}
+
 .user-img {
   border-radius: 50%;
   height: 100px;

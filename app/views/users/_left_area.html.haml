@@ -20,7 +20,7 @@
             .no-active-tag 友だち追加
       %li
         = link_to new_room_path do
-          - if params[:controller] == 'rooms' && params[:action] == 'group_create'
+          - if params[:controller] == 'rooms' && params[:action] == 'new'
             .active-tag グループ作成
           - else
             .no-active-tag グループ作成
