@@ -9,6 +9,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     = render 'layouts/admin/header'
-    .container
-      = yield
+    .row
+      .col-2= render'layouts/admin/sidebar'
+      .col-10= yield
     = render "layouts/admin/footer"

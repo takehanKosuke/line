@@ -1,0 +1,44 @@
+.sidebar
+  #accordion.accordion{"aria-multiselectable" => "true", :role => "tablist"}
+    .card
+      #headingOne.card-header{:role => "tab"}
+        %h5.mb-0
+          %a.text-body{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-toggle" => "collapse", :href => "#collapseOne", :role => "button"}
+            ユーザー
+      #collapseOne.collapse{"aria-labelledby" => "headingOne", "data-parent" => "#accordion", :role => "tabpanel"}
+        .card-body
+          %ul
+            %li
+              = link_to admin_users_path do
+                - if params[:controller] == 'admin/users' && params[:action] == 'index'
+                  .active-tag ユーザー一覧へ
+                - else
+                  .no-active-tag ユーザー一覧へ
+    .card
+      #headingTwo.card-header{:role => "tab"}
+        %h5.mb-0
+          %a.collapsed.text-body{"aria-controls" => "collapseTwo", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseTwo", :role => "button"}
+            ルーム
+      #collapseTwo.collapse{"aria-labelledby" => "headingTwo", "data-parent" => "#accordion", :role => "tabpanel"}
+        .card-body
+          %ul
+            %li
+              = link_to admin_rooms_path do
+                - if params[:controller] == 'admin/rooms' && params[:action] == 'index'
+                  .active-tag ルーム一覧
+                - else
+                  .no-active-tag ルーム一覧
+    .card
+      #headingThree.card-header{:role => "tab"}
+        %h5.mb-0
+          %a.collapsed.text-body{"aria-controls" => "collapseThree", "aria-expanded" => "false", "data-toggle" => "collapse", :href => "#collapseThree", :role => "button"}
+            不適切ワード
+      #collapseThree.collapse{"aria-labelledby" => "headingThree", "data-parent" => "#accordion", :role => "tabpanel"}
+        .card-body
+          %ul
+            %li
+              = link_to admin_inappropriate_words_path do
+                - if params[:controller] == 'admin/inappropriate_words' && params[:action] == 'index'
+                  .active-tag 不適切ワード一覧
+                - else
+                  .no-active-tag 不適切ワード一覧

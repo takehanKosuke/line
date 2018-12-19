@@ -7,3 +7,20 @@
     background-color: #CCFFCC;
   }
 }
+
+.sidebar {
+  min-height: 100vh;
+  height: 100%;
+  background-color: #eee;
+}
+
+.card .card-header a[data-toggle="collapse"] {
+  display: block;
+  padding: .75rem 1.25rem;
+  margin: -.75rem -1.25rem;
+}
+.card .card-header a[data-toggle="collapse"]:active,
+.card .card-header a[data-toggle="collapse"]:hover,
+.card .card-header a[data-toggle="collapse"]:focus {
+  text-decoration: none; //リンクテキストの下線を消す
+}
